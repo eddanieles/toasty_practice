@@ -20,14 +20,11 @@ import { timeIsUp } from '../actions/index';
      const now = Date.now();
      const then = now + seconds * 1000;
 
-     setTimeout(() => {
-       this.props.timeIsUp(true);
-     }, (seconds + 1.01) *1000)
-
      this.interval = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
         // check if we should stop it!
         if(secondsLeft < 0) {
+          this.props.timeIsUp(true);
           clearInterval(this.interval);
           return;
         }
