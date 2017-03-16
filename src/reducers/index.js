@@ -1,8 +1,18 @@
-import { combineReducers } from 'redux';
-import ScoreReducer from './reducer_score';
 
-const rootReducer = combineReducers({
-  score: ScoreReducer
-});
+import { POINT_ADDED } from '../actions/index'
 
-export default rootReducer;
+const initialState = {
+  score: 0
+};
+
+export default function(state = initialState, action) {
+  switch(action.type) {
+  case POINT_ADDED:
+    return {
+      ...state,
+      score: action.payload
+    };
+  }
+
+  return state
+}
