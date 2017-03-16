@@ -15,6 +15,7 @@ import { timeIsUp } from '../actions/index';
    }
 
    componentDidMount() {
+     this.props.timeIsUp(false);
      let seconds = 10;
      const now = Date.now();
      const then = now + seconds * 1000;
@@ -24,7 +25,6 @@ import { timeIsUp } from '../actions/index';
      }, (seconds + 1.01) *1000)
 
      this.interval = setInterval(() => {
-        this.props.timeIsUp(false);
         const secondsLeft = Math.round((then - Date.now()) / 1000);
         // check if we should stop it!
         if(secondsLeft < 0) {

@@ -27,7 +27,9 @@ class Holes extends Component {
     }
     let lastIndex = this.state.randomIndex;
     this.setState({
-      randomIndex: this.randomInteger(0, 5)
+      randomIndex: this.randomInteger(0, 3)
+      //3 instead of array.length to make game more dynamic
+      //since Holes component is rendered twice
     });
     if (lastIndex === this.state.randomIndex) {
       this.setNewTarget();
@@ -51,7 +53,7 @@ class Holes extends Component {
   }
 
   render() {
-    const holes = ["hole1", "hole2", "hole3", "hole4", "hole5", "hole6"];
+    const holes = ["hole1", "hole2", "hole3"];
     var renderHoles = holes.map((hole, index) => {
       let classes = "mole " + hole;
       if (index === this.state.randomIndex) {
