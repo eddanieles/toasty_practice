@@ -19,19 +19,19 @@ class Holes extends Component {
   }
 
   setNewTarget() {
+    if (this.props.isRoundOver) {
+      this.setState({
+        randomIndex: -1
+      });
+      return clearInterval(this.interval);
+    }
     let lastIndex = this.state.randomIndex;
     this.setState({
       randomIndex: this.randomInteger(0, 5)
     });
     if (lastIndex === this.state.randomIndex) {
       this.setNewTarget();
-      console.log('thats the same one');
-    }
-    if (this.props.isRoundOver) {
-      this.setState({
-        randomIndex: -1
-      });
-      clearInterval(this.interval);
+      //console.log('thats the same one');
     }
   }
 
@@ -44,15 +44,11 @@ class Holes extends Component {
 
   componentDidMount() {
     this.interval = setInterval(this.setNewTarget.bind(this), 1000);
-    // setTimeout(() => {
-    //   this.setState({ randomIndex: -1 });
-    //   clearInterval(this.interval);
-    // }, 10000);
   }
 
-  // componentWillUnmount() {
-  //   clearInterval(this.interval);
-  // }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     const holes = ["hole1", "hole2", "hole3", "hole4", "hole5", "hole6"];
@@ -65,6 +61,7 @@ class Holes extends Component {
         <div className="hole" key={index}>
           <div className={classes}>
             <img
+              alt="TOASTY"
               onClick={this.hit.bind(this)}
               src="http://images.uncyc.org/pt/thumb/2/26/Toasty.png/130px-Toasty.png"/>
               <Sound

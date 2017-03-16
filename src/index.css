@@ -15,19 +15,24 @@ h1 {
 
 body {
   background-image: url('https://i.ytimg.com/vi/eTgyr7tYLb4/maxresdefault.jpg');
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  margin: 0;
 }
 
 body .container {
   background-color: rgba(0, 1, 4, 0.8);
   min-width: 100%;
-  min-height: 150%;
+  height: 100%;
   color: #A92822;
 }
 
 header {
   text-align: center;
+}
+
+header h1 {
+  margin: 0;
 }
 
 .hole_component {

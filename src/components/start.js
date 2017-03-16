@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { timeIsUp } from '../actions/index';
-import { bindActionCreators } from 'redux';
 
  class Start extends Component {
    constructor(props) {
@@ -22,7 +21,7 @@ import { bindActionCreators } from 'redux';
 
      setTimeout(() => {
        this.props.timeIsUp(true);
-     }, (seconds + 1.1) *1000)
+     }, (seconds + 1.01) *1000)
 
      this.interval = setInterval(() => {
         this.props.timeIsUp(false);
@@ -43,10 +42,10 @@ import { bindActionCreators } from 'redux';
    }
 
    render() {
-     console.log(this.props.isRoundOver);
+     //console.log(this.props.isRoundOver);
      return (
        <div>
-         <p>TimeLeft: {this.state.timer}</p>
+         <p>TimeLeft: {this.state.timer}s</p>
        </div>
      )
    }

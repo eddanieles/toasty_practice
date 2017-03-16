@@ -17,8 +17,8 @@ export default function(state = initialState, action) {
     return {
       ...state,
       isRoundOver: action.payload
-    }
+    };
+  default:
+    return state;
   }
-
-  return state
 }
