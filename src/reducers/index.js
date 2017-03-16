@@ -1,8 +1,9 @@
 
-import { POINT_ADDED } from '../actions/index'
+import { POINT_ADDED, IS_PLAYING } from '../actions/index';
 
 const initialState = {
-  score: 0
+  score: 0,
+  isRoundOver: true
 };
 
 export default function(state = initialState, action) {
@@ -12,6 +13,11 @@ export default function(state = initialState, action) {
       ...state,
       score: action.payload
     };
+  case IS_PLAYING:
+    return {
+      ...state,
+      isRoundOver: action.payload
+    }
   }
 
   return state

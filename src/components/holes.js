@@ -27,6 +27,12 @@ class Holes extends Component {
       this.setNewTarget();
       console.log('thats the same one');
     }
+    if (this.props.isRoundOver) {
+      this.setState({
+        randomIndex: -1
+      });
+      clearInterval(this.interval);
+    }
   }
 
   hit() {
@@ -38,15 +44,15 @@ class Holes extends Component {
 
   componentDidMount() {
     this.interval = setInterval(this.setNewTarget.bind(this), 1000);
-    setTimeout(() => {
-      this.setState({ randomIndex: -1 });
-      clearInterval(this.interval);
-    }, 10000);
+    // setTimeout(() => {
+    //   this.setState({ randomIndex: -1 });
+    //   clearInterval(this.interval);
+    // }, 10000);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+  // componentWillUnmount() {
+  //   clearInterval(this.interval);
+  // }
 
   render() {
     const holes = ["hole1", "hole2", "hole3", "hole4", "hole5", "hole6"];
@@ -80,7 +86,8 @@ class Holes extends Component {
 
 function mapStateToProps(state) {
   return {
-    score: state.score
+    score: state.score,
+    isRoundOver: state.isRoundOver
   }
 }
 
